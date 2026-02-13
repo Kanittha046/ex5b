@@ -32,6 +32,22 @@
 	</div>
 	
 	<script>
+		function Tempconversion(t,u){
+			   var t1;
+			   var u1;
+			   
+			   if(u == "F"){
+					t1 = t * (9/5) + 32;
+					u1 = "Fahrenheit";
+			   }else if(u == "K"){
+					t1 =  t + 273.15;
+					u1 = "Kelvin";
+			   }else if(u == "R"){
+					t1 = t * (4/5);
+                    u1 = "Réaumur";
+			   }
+			   return {"Temp" : t1 , "Unit" : u1};
+		} 
 		function validateTemperature(t){
 			if(isNaN(t)){
 					msg = "Please verify whether the temperature value is correct!!!";
@@ -52,19 +68,7 @@
 			   var chk = validateTemperature(t);
 			   if(chk != null) return chk;
 			   
-			   var t1;
-			   var u1;
-			   
-			   if(u == "F"){
-					t1 = t * (9/5) + 32;
-					u1 = "Fahrenheit";
-			   }else if(u == "K"){
-					t1 =  t + 273.15;
-					u1 = "Kelvin";
-			   }else if(u == "R"){
-					t1 = t * (4/5);
-                    u1 = "Réaumur";
-			   }
+			   var result = Tempconversion(t,u);
 			   
 			   alert("Temperature is "+t1+" in "+u1);
 			});
